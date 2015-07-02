@@ -1,6 +1,6 @@
 #!/sbin/sh
 
-device=$(grep -io '\(mako\|hammerhead\|shamu\|manta\|flo\|deb\|msm8974\)' /proc/cpuinfo)
+device=$(grep -io '\(n7000\|mako\|hammerhead\|shamu\|manta\|flo\|deb\|msm8974\)' /proc/cpuinfo)
 
 if [ $device ]; then
 echo "Installing specific google bits"
@@ -8,6 +8,11 @@ cp -a /tmp/common/* /system/
 
 if [ $device = "hammerhead" ]; then
   echo "Installing Hammerhead-specific google bits"
+  cp -a /tmp/hammerhead/* /system/
+fi
+
+if [ $device = "n7000" ]; then
+  echo "Installing n7000-specific google bits"
   cp -a /tmp/hammerhead/* /system/
 fi
 
